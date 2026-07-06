@@ -1,12 +1,11 @@
 
 {
-    
-    "name": "ros-devcontainer",
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
+    "name": "rosWork",
+
+    "dockerComposeFile": "compose.yaml",
+    "service": "roswork",
 
     "remoteUser": "rosdev",
-    "containerUser": "rosdev"
 
+    "workspaceFolder": "/workspace/rosWork"
 }

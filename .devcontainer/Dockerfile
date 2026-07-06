@@ -1,12 +1,13 @@
 FROM ros:lyrical
 
 # create a non-root user with UID 1000
-ARG USERNAME=rosdev
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-
+#   catch the related arguments
+ARG USERNAME
+ARG USER_UID
+ARG USER_GID
+#   delete if a usr with UID 1000 user exists
 RUN if id -u $USER_UID ; then userdel `id -un $USER_UID` ; fi
-
+#   add and user and setup sudo
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash \
     && apt-get update \

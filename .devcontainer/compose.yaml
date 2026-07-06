@@ -1,0 +1,28 @@
+
+
+# the services to start
+services:
+
+  # development container
+  roswork:
+
+    # build from the local dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - USERNAME=rosdev
+        - USER_UID=${UID}
+        - USER_GID=${UID}
+
+    # enviroment variables
+    environment:
+      WAYLAND_DISPLAY: ${WAYLAND_DISPLAY}
+
+    # local maching mappings
+    volumes:
+      - ..:/workspace/rosWork
+      - /run/user/${UID}/${WAYLAND_DISPLAY}:/run/user/${UID}/${WAYLAND_DISPLAY}
+
+    # command to keep the container running
+    command: sleep infinity
