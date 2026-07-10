@@ -15,9 +15,17 @@ services:
         - USER_UID=${USER_UID}
         - USER_GID=${USER_GID}
 
-    # local maching mappings
+    environment:
+      - DISPLAY
+
+    devices:
+      - /dev/dri:/dev/dri
+      - /dev/video0:/dev/video0
+
+    # local machine mappings
     volumes:
       - ..:/workspace/rosWork
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
 
     # command to keep the container running
     command: sleep infinity

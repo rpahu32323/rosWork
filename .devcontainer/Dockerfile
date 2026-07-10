@@ -19,7 +19,12 @@ RUN groupadd --gid $USER_GID $USERNAME \
 RUN apt-get update \
     && apt-get upgrade -y    
 
-# additional packages
+# additional general packages
+RUN apt-get install -y \
+    iproute2 \
+    vainfo
+
+# additional ros packages
 RUN apt-get install -y \
     ros-lyrical-rviz2
 
