@@ -19,10 +19,17 @@ RUN groupadd --gid $USER_GID $USERNAME \
 RUN apt-get update \
     && apt-get upgrade -y    
 
+# set up sshd
+RUN apt-get install -y \
+    openssh-server 
+
 # additional general packages
 RUN apt-get install -y \
+    vim \
+    htop \
+    tmux \
     iproute2 \
-    vainfo
+    x11-apps
 
 # additional ros packages
 RUN apt-get install -y \

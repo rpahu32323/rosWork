@@ -15,8 +15,16 @@ services:
         - USER_UID=${USER_UID}
         - USER_GID=${USER_GID}
 
+    user: ${USER_UID}:${USER_GID}
+
+    network_mode: host
+
+    ipc: host
+
     environment:
       - DISPLAY
+      - QT_ENABLE_HIGHDPI_SCALING=0
+      - QT_QPA_PLATFORM=xcb
 
     devices:
       - /dev/dri:/dev/dri
